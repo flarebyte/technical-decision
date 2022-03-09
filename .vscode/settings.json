@@ -1,3 +1,7 @@
 {
-    
+  "yaml.schemas": {
+    ".vscode/decision.schema.json": [
+      "*.decision.yaml"
+    ]
+  }
 }
