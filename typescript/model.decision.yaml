@@ -2,7 +2,7 @@ title: Create interface
 description: Create a typescript interface
 questions:
   - title: This is an interface
-    description: Is this an interface
+    description: a
     tags: interface
     trigger: auto
   - title: This an extension
