@@ -12,10 +12,6 @@ parameters:
   - trigger: project_context
     name: project_problem
     description: Brief description of the problem
-templates:
-  - trigger: project_context
-    value: |-
-      This project, aka {{project_name}}, needs to solve the following problem: {{project_problem}}
 fragment:
   title: Library
   description: Review of a library
@@ -98,6 +94,16 @@ fragment:
     - trigger: library_has_significant_drawback
       name: library_significant_drawback
       description: Significant drawback
-  templates:
-    - trigger: library_context
-      value: "[{{library_name}}]({{library_homepage}})"
+template: |-
+  This project, "{{main.project_name}}", would need to solve the following problem: {{main.project_problem}}.
+  In order to do so, the following libraries should be considered:
+  || Library || stars || contributors || dependencies ||
+  {{#fragment}}
+  |[{{library_name}}]({{library_homepage}})| {{library_stars}} | {{library_contributors}} | {{library_dependencies}} |
+  {{/fragment}}
+
+  {{#fragment}}
+  [{{library_name}}]({{library_homepage}}):
+  {{library_significant_advantage}}
+  {{library_significant_drawback}}
+  {{/fragment}}

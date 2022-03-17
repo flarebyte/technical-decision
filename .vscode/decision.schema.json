@@ -85,29 +85,11 @@
         ]
       }
     },
-    "templates": {
-      "type": "array",
-      "items": {
-        "type": "object",
-        "properties": {
-          "trigger": {
-            "type": "string",
-            "description": "A list of tags expected to be present",
-            "maxLength": 200
-          },
-          "value": {
-            "type": "string",
-            "description": "A template using the mustache syntax",
-            "maxLength": 1000
-          }
-        },
-        "required": [
-          "trigger",
-          "value"
-        ]
-      },
-      "description": "A list of templates in order of preference",
-      "minItems": 1
+    "template": {
+      "type": "string",
+      "description": "A template using the mustache syntax",
+      "minLength": 1,
+      "maxLength": 1000
     },
     "fragment": {
       "type": "object",
@@ -193,38 +175,13 @@
               "description"
             ]
           }
-        },
-        "templates": {
-          "type": "array",
-          "description": "A list of templates in order of preference",
-          "items": {
-            "type": "object",
-            "properties": {
-              "trigger": {
-                "type": "string",
-                "description": "A list of tags expected to be present",
-                "maxLength": 200
-              },
-              "value": {
-                "type": "string",
-                "description": "A template using the mustache syntax",
-                "maxLength": 1000
-              }
-            },
-            "required": [
-              "trigger",
-              "value"
-            ]
-          },
-          "minItems": 1
         }
       },
       "required": [
         "title",
         "description",
         "questions",
-        "parameters",
-        "templates"
+        "parameters"
       ]
     }
   },
@@ -233,7 +190,7 @@
     "description",
     "questions",
     "parameters",
-    "templates",
+    "template",
     "fragment"
   ]
 }
