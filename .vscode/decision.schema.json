@@ -26,7 +26,8 @@
             "type": "string",
             "description": "A short title for the question",
             "minLength": 1,
-            "maxLength": 40
+            "maxLength": 40,
+            "uniqueItems": true
           },
           "description": {
             "type": "string",
@@ -45,12 +46,7 @@
             "maxLength": 200
           }
         },
-        "required": [
-          "title",
-          "description",
-          "tags",
-          "trigger"
-        ]
+        "required": ["title", "description", "tags", "trigger"]
       },
       "minItems": 1
     },
@@ -69,7 +65,8 @@
             "type": "string",
             "description": "A short unique name for the parameter",
             "minLength": 1,
-            "maxLength": 40
+            "maxLength": 40,
+            "uniqueItems": true
           },
           "description": {
             "type": "string",
@@ -78,18 +75,14 @@
             "maxLength": 120
           }
         },
-        "required": [
-          "trigger",
-          "name",
-          "description"
-        ]
+        "required": ["trigger", "name", "description"]
       }
     },
     "template": {
       "type": "string",
       "description": "A template using the mustache syntax",
       "minLength": 1,
-      "maxLength": 1000
+      "maxLength": 10000
     },
     "fragment": {
       "type": "object",
@@ -98,7 +91,8 @@
           "type": "string",
           "description": "A short title for the fragment",
           "minLength": 1,
-          "maxLength": 40
+          "maxLength": 40,
+          "uniqueItems": true
         },
         "description": {
           "type": "string",
@@ -117,7 +111,8 @@
                 "type": "string",
                 "description": "A short title for the question",
                 "minLength": 1,
-                "maxLength": 40
+                "maxLength": 40,
+                "uniqueItems": true
               },
               "description": {
                 "type": "string",
@@ -136,12 +131,7 @@
                 "maxLength": 200
               }
             },
-            "required": [
-              "title",
-              "description",
-              "tags",
-              "trigger"
-            ]
+            "required": ["title", "description", "tags", "trigger"]
           },
           "minItems": 1
         },
@@ -160,7 +150,8 @@
                 "type": "string",
                 "description": "A short unique name for the parameter",
                 "minLength": 1,
-                "maxLength": 40
+                "maxLength": 40,
+                "uniqueItems": true
               },
               "description": {
                 "type": "string",
@@ -169,20 +160,11 @@
                 "maxLength": 120
               }
             },
-            "required": [
-              "trigger",
-              "name",
-              "description"
-            ]
+            "required": ["trigger", "name", "description"]
           }
         }
       },
-      "required": [
-        "title",
-        "description",
-        "questions",
-        "parameters"
-      ]
+      "required": ["title", "description", "questions", "parameters"]
     }
   },
   "required": [

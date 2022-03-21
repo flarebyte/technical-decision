@@ -98,12 +98,12 @@ template: |-
   This project, "{{main.project_name}}", would need to solve the following problem: {{main.project_problem}}.
   In order to do so, the following libraries should be considered:
   || Library || stars || contributors || dependencies ||
-  {{#fragment}}
+  {{#fragments}}
   |[{{library_name}}]({{library_homepage}})| {{library_stars}} | {{library_contributors}} | {{library_dependencies}} |
-  {{/fragment}}
+  {{/fragments}}
 
-  {{#fragment}}
+  {{#fragments}}
   [{{library_name}}]({{library_homepage}}):
   {{library_significant_advantage}}
   {{library_significant_drawback}}
-  {{/fragment}}
+  {{/fragments}}
