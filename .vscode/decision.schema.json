@@ -26,8 +26,7 @@
             "type": "string",
             "description": "A short title for the question",
             "minLength": 1,
-            "maxLength": 40,
-            "uniqueItems": true
+            "maxLength": 40
           },
           "description": {
             "type": "string",
@@ -65,8 +64,7 @@
             "type": "string",
             "description": "A short unique name for the parameter",
             "minLength": 1,
-            "maxLength": 40,
-            "uniqueItems": true
+            "maxLength": 40
           },
           "description": {
             "type": "string",
@@ -91,8 +89,7 @@
           "type": "string",
           "description": "A short title for the fragment",
           "minLength": 1,
-          "maxLength": 40,
-          "uniqueItems": true
+          "maxLength": 40
         },
         "description": {
           "type": "string",
@@ -111,8 +108,7 @@
                 "type": "string",
                 "description": "A short title for the question",
                 "minLength": 1,
-                "maxLength": 40,
-                "uniqueItems": true
+                "maxLength": 40
               },
               "description": {
                 "type": "string",
@@ -150,8 +146,7 @@
                 "type": "string",
                 "description": "A short unique name for the parameter",
                 "minLength": 1,
-                "maxLength": 40,
-                "uniqueItems": true
+                "maxLength": 40
               },
               "description": {
                 "type": "string",
