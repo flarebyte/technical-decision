@@ -23,10 +23,6 @@ parameters:
   - trigger: has/class
     name: class_name
     description: Name of the class
-template: |-
-      class {{class_name}} interface {{name}} extends {{base_interface}}
-      {{fragments}}
-      end of class
 fragment:
   title: field
   description: Description of a field
@@ -58,3 +54,7 @@ fragment:
     - trigger: type/advanced
       name: advanced_type
       description: Name of the advanced type
+template: |-
+      class {{class_name}} interface {{name}} extends {{base_interface}}
+      {{fragments}}
+      end of class

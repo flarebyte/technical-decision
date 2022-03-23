@@ -1,0 +1,44 @@
+title: Telemetry
+description: Choose metric for telemetry
+questions:
+  - title: Telemetry
+    description: About Telemetry
+    tags: has_telemetry
+    trigger: auto
+  
+parameters:
+  - trigger: has_telemetry
+    name: metric_family
+    description: Name of the metric family
+
+fragment:
+  title: Metric
+  description: Information about a metric
+  questions:
+    - title: Metric
+      description: About Metric
+      tags: has_metric
+      trigger: auto
+    - title: Is Frequency
+      description: does this metric represent a frequency
+      tags: is_frequency
+      trigger: ''
+    - title: Is Frequency
+      description: does this metric represent a frequency
+      tags: is_frequency
+      trigger: ''
+  parameters:
+    - trigger: has_metric
+      name: metric_name
+      description: Name of the metric
+    - trigger: has_metric
+      name: metric_unit
+      description: Unit of the metric
+    - trigger: has_metric
+      name: business_purpose
+      description: The reason behind the metric for business purpose
+
+template: |-
+      class {{class_name}} interface {{name}} extends {{base_interface}}
+      {{fragments}}
+      end of class
