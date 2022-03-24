@@ -94,14 +94,17 @@ template: |-
   ## {{main.period}}
   {{#fragments}}
   ### {{title}}
-  Context: 
+
+  **Context:**
+
   {{context}}
   
   {{#about_investigation}}
-  Investigation: {{investigation_time}}. Frequency: {{problem_frequency}}. Validity: {{problem_validity}}.
+  **Investigation:** {{investigation_time}}. **Frequency:** {{problem_frequency}}. **Validity**: {{problem_validity}}.
   {{/about_investigation}}
   
-  Problem:
+  **Problem:**
+  
   {{description}}
 
   {{#about_functional_bug}}
@@ -138,13 +141,16 @@ template: |-
     * The requirements are too vague and need to be refined.
   {{/about_missing_requirements}}
   
-  Main solution:
+  **Main solution:**
+
   {{solution}}
 
-  Abstraction of the solution:
+  **Abstraction of the solution:**
+
    {{abstract_solution}}
 
-  Derived ideas:
+  **Derived ideas:**
+
   * idea 1
 
 
