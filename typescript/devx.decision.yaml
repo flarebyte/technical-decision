@@ -1,0 +1,96 @@
+title: Developer experience
+description: Create a DevX report
+questions:
+  - title: This is DevX
+    description: This is DevX
+    tags: is_dev_x
+    trigger: auto
+parameters:
+  - trigger: is_dev_x
+    name: product
+    description: The name of the product, application or CLI
+  - trigger: is_dev_x
+    name: period
+    description: the period of the trial
+fragment:
+  title: experience
+  description: Description of one experience
+  questions:
+    - title: Experience
+      description: The experience
+      tags: is_experience
+      trigger: auto
+    - title: This went well
+      description: The Dev experience went well
+      tags: is_good
+      trigger: ''
+    - title: This went badly
+      description: The Dev experience went badly
+      tags: is_bad
+      trigger: ''
+    - title: Alternative idea
+      description: An alternative approach or tooling that could be used
+      tags: has_alternative_idea
+      trigger: ''
+    - title: Alternative use case
+      description: An alternative use case that could be supported
+      tags: has_alternative_use_case
+      trigger: ''
+    - title: Consider removing
+      description: This feature could be removed
+      tags: should_remove
+      trigger: ''
+    - title: Require enhancing
+      description: This feature need to be enhance
+      tags: should_enhance
+      trigger: ''
+    - title: Move out
+      description: This feature should be part of a different tool
+      tags: should_move_out
+      trigger: ''
+  parameters:
+    - trigger: is_good
+      name: good_experience
+      description: Describe what went well
+    - trigger: is_bad
+      name: bad_experience
+      description: Describe what went badly
+    - trigger: has_alternative_idea
+      name: alternative_idea
+      description: Describe an alternative idea
+    - trigger: has_alternative_use_case
+      name: alternative_use_case
+      description: Describe an alternative use case that could be supported
+template: |-
+      ## {{product}} - {{period}}
+      {{#fragments}}
+
+      {{#is_good}}
+      ### {{good_experience}} (Good)
+      {{/is_good}}
+      {{#is_bad}}
+      ### {{bad_experience}} (Bad)
+      {{/is_bad}}
+
+      {{#should_remove}}
+      * Consider removing this feature in the future or future tools.
+      {{/should_remove}}
+      {{#should_enhance}}
+      * This feature needs to be improved to be really useful.
+      {{/should_enhance}}
+      {{#should_move_out}}
+      * This feature should be moved out to a different tool.
+      {{/should_move_out}}
+
+      {{#has_alternative_idea}}
+      **Alternative ideas:**
+
+      {{alternative_idea}}
+      {{/has_alternative_idea}}
+      {{#has_alternative_use_case}}
+      **Alternative use case that could be supported:**
+
+      {{alternative_use_case}}
+      {{/has_alternative_use_case}}
+
+      {{/fragments}}
