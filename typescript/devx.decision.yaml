@@ -66,10 +66,10 @@ template: |-
       {{#fragments}}
 
       {{#is_good}}
-      ### {{good_experience}} (Good)
+      * {{good_experience}} (Good)
       {{/is_good}}
       {{#is_bad}}
-      ### {{bad_experience}} (Bad)
+      * {{bad_experience}} (Bad)
       {{/is_bad}}
 
       {{#should_remove}}
