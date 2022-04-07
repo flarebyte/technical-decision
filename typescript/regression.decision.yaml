@@ -1,0 +1,46 @@
+title: Add some regression tests
+description: Regression tests that can be done manually
+questions:
+  - title: Has Regression
+    description: It is a regression entry
+    tags: has_regression
+    trigger: auto
+parameters:
+  - trigger: has_regression
+    name: project
+    description: Name of the project
+fragment:
+  title: Regression entry
+  description: a regression entry
+  questions:
+    - title: Has entry
+      description: It is a regression entry
+      tags: has_entry
+      trigger: auto
+  parameters:
+    - trigger: has_entry
+      name: title
+      description: Title for the entry
+    - trigger: has_entry
+      name: given
+      description: Given > pre-requisite
+    - trigger: has_entry
+      name: when
+      description: When > defines the trigger point
+    - trigger: has_entry
+      name: then
+      description: Then > holds the expected result
+template: |-
+  # Manual Regression testing for {{project}}
+
+  This document describes a list of regression tests that could be run manually in order to prove that the software is working correctly.
+
+  {{#fragments}}
+  
+  ## {title}
+
+  Given: {{given}}
+  When: {{when}}
+  Then: {{then}}
+
+  {{/fragments}}
