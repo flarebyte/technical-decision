@@ -1,0 +1,157 @@
+title: Add some entries in a journal
+description: What have we learnt today
+questions:
+  - title: Has journal
+    description: It is a journal
+    tags: has_journal
+    trigger: auto
+parameters:
+  - trigger: has_journal
+    name: period
+    description: Period of the learning
+fragment:
+  title: Journal entry
+  description: a journal entry
+  questions:
+    - title: Has entry
+      description: It is a journal entry
+      tags: has_entry
+      trigger: auto
+    - title: About investigation
+      description: This is about investigating a problem
+      tags: about_investigation
+      trigger: ''
+    - title: Functional bug visible by the user
+      description: The application does not function as intended
+      tags: about_functional_bug
+      trigger: ''
+    - title: Logical bug visible by the user
+      description: The algorithm is incorrect
+      tags: about_logical_bug
+      trigger: ''
+    - title: Workflow bug visible by the user
+      description: The user journey is not coherent
+      tags: about_workflow_bug
+      trigger: ''
+    - title: System Level Integration bug
+      description: Two units of code fail to interact with each other
+      tags: about_integration_bug
+      trigger: ''
+    - title: Security flow
+      description: Security should be improved for this area
+      tags: about_security
+      trigger: ''
+    - title: Missing documentation
+      description: Additional documentation would help with this problem in the future
+      tags: about_missing_documentation
+      trigger: ''
+    - title: Missing contract
+      description: Stronger contract could detect these in the future
+      tags: about_missing_contract
+      trigger: ''
+    - title: Missing testing
+      description: Additional testing is required
+      tags: about_missing_testing
+      trigger: ''
+    - title: Missing tooling
+      description: Too many manual steps that should be replaced by tooling
+      tags: about_missing_tooling
+      trigger: ''
+    - title: Missing knowledge
+      description: More knowledge would be required for this field
+      tags: about_missing_knowledge
+      trigger: ''
+    - title: Missing requirements
+      description: Lack of requirements let this problem creep in
+      tags: about_missing_requirements
+      trigger: ''
+  parameters:
+    - trigger: has_entry
+      name: title
+      description: Title for the entry
+    - trigger: has_entry
+      name: description
+      description: Description for the entry
+    - trigger: has_entry
+      name: context
+      description: The context for the entry
+    - trigger: has_entry
+      name: solution
+      description: the solution
+    - trigger: has_entry
+      name: abstract_solution
+      description: the abstraction of the solution
+    - trigger: about_investigation
+      name: investigation_time
+      description: Rough estimate of the time it took to investigate the problem
+    - trigger: about_investigation
+      name: problem_frequency
+      description: How often this problem may occur
+    - trigger: about_investigation
+      name: problem_validity
+      description: How long this problem will be relevant
+template: |-
+  ## {{main.period}}
+  {{#fragments}}
+  ### {{title}}
+
+  **Context:**
+
+  {{context}}
+  
+  {{#about_investigation}}
+  **Investigation:** {{investigation_time}}. **Frequency:** {{problem_frequency}}. **Validity**: {{problem_validity}}.
+  {{/about_investigation}}
+  
+  **Problem:**
+  
+  {{description}}
+
+  {{#about_functional_bug}}
+    * The application does not function as intended.
+  {{/about_functional_bug}}
+  {{#about_logical_bug}}
+    * One of the algorithms is incorrect.
+  {{/about_logical_bug}}
+  {{#about_workflow_bug}}
+    * The user journey is not coherent.
+  {{/about_workflow_bug}}
+  {{#about_integration_bug}}
+    * Two units of code fail to interact with each other.
+  {{/about_integration_bug}}
+  {{#about_security}}
+    * A security concern should be taken into account.
+  {{/about_security}}
+  {{#about_missing_documentation}}
+    * Additional documentation is required.
+  {{/about_missing_documentation}}
+  {{#about_missing_contract}}
+    * A stronger contract is needed.
+  {{/about_missing_contract}}
+  {{#about_missing_testing}}
+    * Additional testing is required.
+  {{/about_missing_testing}}
+  {{#about_missing_tooling}}
+    * Too many manual steps that should be replaced by tooling.
+  {{/about_missing_tooling}}
+  {{#about_missing_knowledge}}
+    * More knowledge would be required for this field.
+  {{/about_missing_knowledge}}
+  {{#about_missing_requirements}}
+    * The requirements are too vague and need to be refined.
+  {{/about_missing_requirements}}
+  
+  **Main solution:**
+
+  {{solution}}
+
+  **Abstraction of the solution:**
+
+   {{abstract_solution}}
+
+  **Derived ideas:**
+
+  * idea 1
+
+
+  {{/fragments}}

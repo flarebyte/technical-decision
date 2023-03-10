@@ -1,0 +1,204 @@
+title: Architecture decision record
+description: Capture an architecture decision record (ADR) including context and consequences
+questions:
+  - title: Architecture decision record
+    description: Is Architecture decision record
+    tags: has_adr
+    trigger: auto
+  - title: Urgent
+    description: Is the decision urgent ?
+    tags: is_urgent
+    trigger: ""
+  - title: Important
+    description: Is this decision important ?
+    tags: is_important
+    trigger: ""
+  - title: Vague problem
+    description: Is the problem a bit vague at this stage ?
+    tags: is_vague
+    trigger: ""
+  - title: Experimental solution
+    description: The solution is likely to be experimental
+    tags: is_experimental
+    trigger: ""
+  - title: Quick and dirty
+    description: This problem is a good fit for a quick and dirty solution
+    tags: is_quick_and_dirty
+    trigger: ""
+  - title: Support friendly
+    description: The solution should facilitate support
+    tags: is_support_friendly
+    trigger: ""
+  - title: Monitoring
+    description: The solution should publish monitoring metrics
+    tags: has_monitoring
+    trigger: ""
+  - title: Telemetry
+    description: The solution should publish user telemetry
+    tags: has_telemetry
+    trigger: ""
+  - title: Support internationalization
+    description: The solution should support internationalization
+    tags: is_i18n
+    trigger: ""
+  - title: Support port
+    description: The solution should be easy to port to different programming languages
+    tags: has_port
+    trigger: ""
+  - title: Accessible
+    description: The solution should be accessible
+    tags: is_accessible
+    trigger: ""
+  - title: Theme friendly
+    description: The solution should be accessible
+    tags: is_theme_friendly
+    trigger: ""
+  - title: Moving business target
+    description: The business target is moving
+    tags: is_moving_target
+    trigger: ""
+  - title: Data privacy
+    description: The solution should ensure data privacy
+    tags: has_privacy
+    trigger: ""
+  - title: Data accountancy
+    description: The solution should ensure that data is not corrupted.
+    tags: has_data_accountancy
+    trigger: ""
+  - title: Data contract
+    description: The solution should ensure a data contract.
+    tags: has_data_contract
+    trigger: ""
+  - title: Scalability
+    description: The solution should scale.
+    tags: has_scalability
+    trigger: ""
+parameters:
+  - trigger: has_adr
+    name: title
+    description: Short title of solved problem and solution
+  - trigger: has_adr
+    name: deciders
+    description: List everyone involved in the decision
+
+fragment:
+  title: Solution
+  description: Description of a possible solution
+  questions:
+    - title: Has a solution
+      description: Description of pros and cons of a solution
+      tags: has_solution
+      trigger: auto
+    - title: Hard to implement
+      description: This approach will be hard to implement
+      tags: is_hard
+      trigger: ""
+    - title: New knowledge
+      description: This approach to learn new knowledge
+      tags: require_new_knowledge
+      trigger: ""
+  parameters:
+    - trigger: has_solution
+      name: title
+      description: Title for the solution
+    - trigger: has_solution
+      name: description
+      description: Description for the solution
+    - trigger: require_new_knowledge
+      name: new_knowledge
+      description: New knowledge needed
+template: |-
+  # {{main.title}}
+
+  * Status: proposed
+  * {{#main.is_important}}MUST-HAVE.{{/main.is_important}}{{#main.is_urgent}}URGENT.{{/main.is_urgent}}
+  * Deciders: {{deciders}}
+
+  ## Context and Problem Statement
+
+  {{#main.is_vague}}
+  * At the moment, part of the problem is still vague and will hopefully be clarified over time.
+  {{/main.is_vague}}
+
+  ## Decision Drivers
+
+  {{#main.is_experimental}}
+  * There is no obvious solution for this problem, and we should assume an experimental approach.
+  {{/main.is_experimental}}
+  {{#main.is_quick_and_dirty}}
+  * Prefer a quick implementation. The speed of development is more important for this problem that the quality of the solution.
+  {{/main.is_quick_and_dirty}}
+  {{#main.is_support_friendly}}
+  * Should make support as friendly as possible. In other words, logging should be sufficient to quickly narrow down issues.
+  {{/main.is_support_friendly}}
+  {{#main.has_monitoring}}
+  * Should publish monitoring metrics. These metrics would probably be analyzed in real time, most likely on a dashboard, by a support team.
+  {{/main.has_monitoring}}
+  {{#main.has_telemetry}}
+  * Should publish user telemetry. These metrics should help improve the user experience over time.
+  {{/main.has_telemetry}}
+  {{#main.is_i18n}}
+  * Should make it simple to provide a translation in different languages.
+  {{/main.is_i18n}}
+  {{#main.has_port}}
+  * Should be easy to port to different programming languages.
+  {{/main.has_port}}
+  {{#main.is_accessible}}
+  * Should be accessible to people with different access requirements.
+  {{/main.is_accessible}}
+  {{#main.is_theme_friendly}}
+  * Should make it possible to support different visual themes.
+  {{/main.is_theme_friendly}}
+  {{#main.is_moving_target}}
+  * Should accommodate a moving business target.
+  {{/main.is_moving_target}}
+  {{#main.has_privacy}}
+  * Should ensure data privacy.
+  {{/main.has_privacy}}
+  {{#main.has_data_accountancy}}
+  * Should ensure that data is not corrupted.
+  {{/main.has_data_accountancy}}
+  {{#main.has_data_contract}}
+  * Should ensure a data contract.
+  {{/main.has_data_contract}}
+  {{#main.has_scalability}}
+  * Should scale.
+  {{/main.has_scalability}}
+
+
+  ## Considered Options
+  {{#fragments}}
+  * {{title}} {{#is_hard}}(Complex){{/is_hard}}
+  {{/fragments}}
+
+  ## Decision Outcome
+
+  Chosen option: "{option 1}", because
+
+  ### Positive Consequences
+
+  * one
+  * two
+
+  ### Negative Consequences
+
+  * one
+  * …
+
+  ## Pros and Cons of the Options
+
+  {{#fragments}}
+  ### {{title}}
+
+  {{description}}
+
+  {{#is_hard}}
+  * Could be complex to implementation.
+  {{/is_hard}}
+  {{#new_knowledge}}
+  * New knowledge will be required:{{new_knowledge}}
+  {{/new_knowledge}}
+  * Good, because ...
+  * Bad, because ...
+  ___
+  {{/fragments}}

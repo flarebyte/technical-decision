@@ -1,0 +1,109 @@
+title: Choose a library
+description: Choose the most suitable node.js library for a project
+questions:
+  - title: Project context
+    description: The context of project that would benefit from this library
+    tags: project_context
+    trigger: auto
+parameters:
+  - trigger: project_context
+    name: project_name
+    description: Name of the project
+  - trigger: project_context
+    name: project_problem
+    description: Brief description of the problem
+fragment:
+  title: Library
+  description: Review of a library
+  questions:
+    - title: Library context
+      description: The context of the library
+      tags: library_context
+      trigger: auto
+    - title: Has many stars
+      description: The library has many stars on github
+      tags: library_has_stars
+      trigger: ""
+    - title: Is on BestOfJs
+      description: The library is recommended on BestOfJs website
+      tags: library_is_best_of_js
+      trigger: ""
+    - title: Has many contributors
+      description: The library has more than a few contributors
+      tags: library_has_contributors
+      trigger: ""
+    - title: Has several dependencies
+      description: The library has several dependencies
+      tags: library_has_dependencies
+      trigger: ""
+    - title: Export types
+      description: The library exports Typescript types
+      tags: library_has_types
+      trigger: ""
+    - title: Is in Typescript
+      description: The library is written in Typescript
+      tags: library_is_in_typescript
+      trigger: ""
+    - title: Is ESM
+      description: The library is available in ESM format
+      tags: library_is_esm
+      trigger: ""
+    - title: Is lightweight
+      description: The library is lightweight
+      tags: library_is_lightweight
+      trigger: ""
+    - title: Has founding
+      description: The library has founding
+      tags: library_has_founding
+      trigger: ""
+    - title: Has founding
+      description: The library has founding
+      tags: library_has_founding
+      trigger: ""
+    - title: Has some recent commits
+      description: The library has had some commits in the last few months
+      tags: library_has_recent_commits
+      trigger: ""
+    - title: Has significant advantage
+      description: The library has a significant advantage
+      tags: library_has_significant_advantage
+      trigger: ""
+    - title: Has significant drawback
+      description: The library has a significant drawback
+      tags: library_has_significant_drawback
+      trigger: ""
+  parameters:
+    - trigger: library_context
+      name: library_name
+      description: Name of the library
+    - trigger: library_context
+      name: library_homepage
+      description: Homepage of the library
+    - trigger: library_has_stars
+      name: library_stars
+      description: Numbers of stars in Github
+    - trigger: library_has_contributors
+      name: library_contributors
+      description: Numbers of contributors
+    - trigger: library_has_dependencies
+      name: library_dependencies
+      description: Numbers of dependencies
+    - trigger: library_has_significant_advantage
+      name: library_significant_advantage
+      description: Significant advantage
+    - trigger: library_has_significant_drawback
+      name: library_significant_drawback
+      description: Significant drawback
+template: |-
+  This project, "{{main.project_name}}", would need to solve the following problem: {{main.project_problem}}.
+  In order to do so, the following libraries should be considered:
+  || Library || stars || contributors || dependencies ||
+  {{#fragments}}
+  |[{{library_name}}]({{library_homepage}})| {{library_stars}} | {{library_contributors}} | {{library_dependencies}} |
+  {{/fragments}}
+
+  {{#fragments}}
+  [{{library_name}}]({{library_homepage}}):
+  {{library_significant_advantage}}
+  {{library_significant_drawback}}
+  {{/fragments}}

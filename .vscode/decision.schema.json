@@ -1,0 +1,173 @@
+{
+  "type": "object",
+  "$id": "https://github.com/flarebyte/baldrick-decision/baldrick-decision.schema.json",
+  "title": "Schema for providing an interactive checklist to make decision",
+  "properties": {
+    "title": {
+      "type": "string",
+      "description": "A short title for the main decision",
+      "minLength": 1,
+      "maxLength": 40
+    },
+    "description": {
+      "type": "string",
+      "description": "A description or hint for the main decision",
+      "minLength": 1,
+      "maxLength": 120
+    },
+    "questions": {
+      "type": "array",
+      "description": "A list of questions that will be presented as a selection",
+      "items": {
+        "description": "A question that will be presented as a selection",
+        "type": "object",
+        "properties": {
+          "title": {
+            "type": "string",
+            "description": "A short title for the question",
+            "minLength": 1,
+            "maxLength": 40
+          },
+          "description": {
+            "type": "string",
+            "description": "A description or hint for the question",
+            "minLength": 1,
+            "maxLength": 120
+          },
+          "tags": {
+            "type": "string",
+            "description": "A list of tags separated by spaces",
+            "maxLength": 200
+          },
+          "trigger": {
+            "type": "string",
+            "description": "A list of tags expected to be present",
+            "maxLength": 200
+          }
+        },
+        "required": ["title", "description", "tags", "trigger"]
+      },
+      "minItems": 1
+    },
+    "parameters": {
+      "type": "array",
+      "description": "A list of parameters that will need to be populated",
+      "items": {
+        "type": "object",
+        "properties": {
+          "trigger": {
+            "type": "string",
+            "description": "A list of tags expected to be present",
+            "maxLength": 200
+          },
+          "name": {
+            "type": "string",
+            "description": "A short unique name for the parameter",
+            "minLength": 1,
+            "maxLength": 40
+          },
+          "description": {
+            "type": "string",
+            "description": "A description or hint for the parameter",
+            "minLength": 1,
+            "maxLength": 120
+          }
+        },
+        "required": ["trigger", "name", "description"]
+      }
+    },
+    "template": {
+      "type": "string",
+      "description": "A template using the mustache syntax",
+      "minLength": 1,
+      "maxLength": 10000
+    },
+    "fragment": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string",
+          "description": "A short title for the fragment",
+          "minLength": 1,
+          "maxLength": 40
+        },
+        "description": {
+          "type": "string",
+          "description": "A description or hint for the fragment",
+          "minLength": 1,
+          "maxLength": 120
+        },
+        "questions": {
+          "type": "array",
+          "description": "A list of questions that will be presented as a selection",
+          "items": {
+            "description": "A question that will be presented as a selection",
+            "type": "object",
+            "properties": {
+              "title": {
+                "type": "string",
+                "description": "A short title for the question",
+                "minLength": 1,
+                "maxLength": 40
+              },
+              "description": {
+                "type": "string",
+                "description": "A description or hint for the question",
+                "minLength": 1,
+                "maxLength": 120
+              },
+              "tags": {
+                "type": "string",
+                "description": "A list of tags separated by spaces",
+                "maxLength": 200
+              },
+              "trigger": {
+                "type": "string",
+                "description": "A list of tags expected to be present",
+                "maxLength": 200
+              }
+            },
+            "required": ["title", "description", "tags", "trigger"]
+          },
+          "minItems": 1
+        },
+        "parameters": {
+          "type": "array",
+          "description": "A list of parameters that will need to be populated",
+          "items": {
+            "type": "object",
+            "properties": {
+              "trigger": {
+                "type": "string",
+                "description": "A list of tags expected to be present",
+                "maxLength": 200
+              },
+              "name": {
+                "type": "string",
+                "description": "A short unique name for the parameter",
+                "minLength": 1,
+                "maxLength": 40
+              },
+              "description": {
+                "type": "string",
+                "description": "A description or hint for the parameter",
+                "minLength": 1,
+                "maxLength": 120
+              }
+            },
+            "required": ["trigger", "name", "description"]
+          }
+        }
+      },
+      "required": ["title", "description", "questions", "parameters"]
+    }
+  },
+  "required": [
+    "title",
+    "description",
+    "questions",
+    "parameters",
+    "template",
+    "fragment"
+  ]
+}
